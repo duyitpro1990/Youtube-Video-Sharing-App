@@ -44,7 +44,7 @@ docker-compose exec api rails db:prepare
 ## 6. Running the Test Suite
 Testing is integrated into both the Backend and Frontend to ensure reliability.
 
-### Backend Tests (Minitest)
+## Backend Tests (Minitest)
 ```bash
 docker-compose exec api rails test
 
