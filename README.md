@@ -48,6 +48,10 @@ Testing is integrated into both the Backend and Frontend to ensure reliability.
 ```bash
 docker-compose exec api rails test
 ```
+### Frontend Tests
+```bash
+docker-compose exec frontend npx vitest run
+```
 
 ## 7. How to Test Real-time Notifications
 To verify the real-time notification system without needing two different computers, follow these steps:
