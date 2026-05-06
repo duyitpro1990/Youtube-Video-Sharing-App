@@ -47,3 +47,21 @@ Testing is integrated into both the Backend and Frontend to ensure reliability.
 ### Backend Tests (Minitest)
 ```bash
 docker-compose exec api rails test
+```
+
+## 7. How to Test Real-time Notifications
+To verify the real-time notification system without needing two different computers, follow these steps:
+
+1.  **Open the first session**: Open your standard browser (e.g., Chrome) and go to `http://localhost:5173`. Log in with **Account A**.
+2.  **Open the second session**: Open an **Incognito/Private window** and go to `http://localhost:5173`. Log in with **Account B**.
+3.  **Perform the share**:
+    *   In **Account A**, click the "Share a movie" button, enter a YouTube URL, and submit.
+    *   Switch to the **Account B** window immediately.
+4.  **Observe the result**:
+    *   You will see a **Toast Notification** appearing at the top-right corner of Account B's screen notifying you of the new video.
+    *   The **Video List** in Account B will automatically prepend the new video to the top without needing a page refresh.
+
+## 8. Troubleshooting
+*   **Database Connection**: If the API container starts before MySQL is ready, restart the API with `docker-compose restart api`.
+*   **WebSocket Connection**: Ensure Redis is active (check via `docker-compose ps`) to maintain the real-time notification stream.
+*   **Port Conflicts**: Ensure ports `3000`, `3307`, `5173`, and `6379` are available on your host machine.
