@@ -1,0 +1,23 @@
+# --- System & Git ---
+.git
+.gitignore
+.dockerignore
+LICENSE
+README.md
+
+# --- Backend (Rails) ---
+/backend/log/*
+/backend/tmp/*
+/backend/storage/*
+/backend/config/*.key
+/backend/.env*
+/backend/.bundle
+/backend/.github
+/backend/.kamal
+/backend/Dockerfile*
+
+# --- Frontend (Node) ---
+/frontend/node_modules/
+/frontend/dist/
+/frontend/npm-debug.log*
+/frontend/Dockerfile*

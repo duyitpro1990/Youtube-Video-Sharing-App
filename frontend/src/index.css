@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+/* Custom basic styling to match wireframes */
+body {
+  font-family: 'Arial', sans-serif;
+  color: #333;
+}

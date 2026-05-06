@@ -1,0 +1,67 @@
+version: '3.8'
+
+services:
+  # Cơ sở dữ liệu MySQL
+  db:
+    image: mysql:8.0
+    container_name: funny_movies_db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: funnymovies_development
+      MYSQL_USER: devuser
+      MYSQL_PASSWORD: devpassword
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    restart: unless-stopped
+
+  # Backend Rails API
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: funny_movies_api
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - ./backend:/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+      - redis
+    environment:
+      RAILS_ENV: development
+      DATABASE_URL: mysql2://devuser:devpassword@db:3306/funnymovies_development
+      REDIS_URL: redis://redis:6379/1
+      SECRET_KEY_BASE: 770b8c385a499c759086118d026b42
+    restart: unless-stopped
+
+  # Redis phục vụ WebSockets (ActionCable)
+  redis:
+    image: redis:7-alpine
+    container_name: funny_movies_redis
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+
+  # Frontend React (Vite)
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: funny_movies_frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - api
+    environment:
+      - WATCHPACK_POLLING=true
+      - CHOKIDAR_USEPOLLING=true
+    restart: unless-stopped
+
+volumes:
+  mysql_data:

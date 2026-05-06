@@ -1,0 +1,8 @@
+# Tạo 2 user giả lập
+one:
+  email: test1@gmail.com
+  password_digest: <%= BCrypt::Password.create('password123') %>
+
+two:
+  email: test2@gmail.com
+  password_digest: <%= BCrypt::Password.create('password123') %>

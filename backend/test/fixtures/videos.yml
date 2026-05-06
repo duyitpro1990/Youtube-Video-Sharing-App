@@ -1,0 +1,11 @@
+one:
+  title: "Video Test 1"
+  youtube_url: "https://www.youtube.com/watch?v=123456"
+  description: "Mô tả video test 1"
+  user: one
+
+two:
+  title: "Video Test 2"
+  youtube_url: "https://www.youtube.com/watch?v=654321"
+  description: "Mô tả video test 2"
+  user: two

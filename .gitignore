@@ -1,0 +1,55 @@
+# --- System & Editors ---
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.sw?
+*.suo
+
+
+# --- Backend (Rails) ---
+# Ignore bundler config.
+/backend/.bundle
+
+# Ignore all environment files.
+/backend/.env*
+
+# Ignore all logfiles and tempfiles.
+/backend/log/*
+/backend/tmp/*
+!/backend/log/.keep
+!/backend/tmp/.keep
+
+# Ignore pidfiles, but keep the directory.
+/backend/tmp/pids/*
+!/backend/tmp/pids/
+!/backend/tmp/pids/.keep
+
+# Ignore storage (uploaded files and SQLite databases).
+/backend/storage/*
+!/backend/storage/.keep
+/backend/tmp/storage/*
+!/backend/tmp/storage/
+!/backend/tmp/storage/.keep
+
+# Ignore key files for decrypting credentials.
+/backend/config/*.key
+
+
+# --- Frontend (React/Vite) ---
+# Dependencies
+/frontend/node_modules/
+
+# Production build
+/frontend/dist/
+/frontend/dist-ssr/
+
+# Logs
+/frontend/logs/
+/frontend/*.log
+/frontend/npm-debug.log*
+/frontend/yarn-debug.log*
+/frontend/yarn-error.log*
+
+# Environment local files
+/frontend/*.local
